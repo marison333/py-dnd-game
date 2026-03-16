@@ -1,7 +1,6 @@
 import time
 import random
 from utils import slow_print
-from entities import Player, Monster
 
 def print_status(player, monster):
     max_player_health = player.max_health
@@ -97,6 +96,8 @@ def fight(player, monster):
             break
 
     print_status(player, monster)
+
+    # end result
     if player.health > 0 and monster.health <= 0:
         print("\033[H\033[J", end="")
         print_action(f"{player.name} win the fight!")
@@ -114,6 +115,3 @@ def fight(player, monster):
         fight_result = "lost"
 
     return fight_result
-
-if __name__ == '__main__':
-    fight(john, skeleton)
