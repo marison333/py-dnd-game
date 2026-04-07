@@ -1,6 +1,6 @@
 import time
 from utils import slow_print
-from entities import Player
+from create_player import create_player
 
 title_file_path = 'assets/title.txt'
 
@@ -11,8 +11,7 @@ def intro():
 
     slow_print("\nWelcome to Valoria, the capital of this Kingdom.\n")
 
-    player_name = input("\nHero, what is your name? ")
-    player = Player(player_name, 100, [])
+    player = create_player()
 
     quest = input("\nIt appears you are a traveling Hero seeking a quest correct? (yes/no)\n").lower()
     if quest != "yes":
@@ -65,6 +64,7 @@ def intro():
     slow_print("\nYour first battle begins!")
 
     return player
+
 
 if __name__ == "__main__":
     intro()
