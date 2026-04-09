@@ -1,6 +1,6 @@
 import time
 import random
-from utils import slow_print
+from utils import slow_print, print_screen
 from entities.player import Player
 from entities.monster import Monster
 
@@ -10,6 +10,7 @@ flee_threshold = 15 # 30% chance to flee successfully
 fight_result = ""
 
 CLEAR_SCREEN = "\033[H\033[J"
+DEATH_SCREEN = 'assets/death_screen.txt'
 
 
 def print_status(player, monster) -> None:
@@ -143,7 +144,9 @@ def fight(player, monster) -> str:
         fight_result = "fled"
     else:
         print(CLEAR_SCREEN, end="")
-        print_action(f"{monster.name} wins the fight!")
+        print_screen(DEATH_SCREEN)
+        time.sleep(2.5)
+        print_action(f"{monster.name} has killed you!")
         time.sleep(2)
         fight_result = "lost"
 
