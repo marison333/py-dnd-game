@@ -2,8 +2,9 @@ import json
 import os
 from entities import monster
 from utils import slow_print, print_screen, handle_choice
+from core.game_state import create_game_state
 from core.game_state import trigger_event
-
+from create_player import create_player
 
 TITLE_SCREEN = 'assets/title.txt'
 BASE_DIRECTORY = os.path.dirname(__file__)
@@ -17,7 +18,6 @@ def load_story():
 
 def show_intro():
     print_screen(TITLE_SCREEN)
-
     slow_print("\nWelcome to Valoria, the capital of this Kingdom.\n")
 
 
@@ -44,3 +44,10 @@ def play_story(story: dict, game_state: dict) -> bool | None:
         current_scene = scene["next"].get(choice)
 
     return False
+
+
+if __name__ =="__main__":
+    story = load_story()
+    player = create_player()
+    game_state = create_game_state(player)
+    play_story(story, game_state)
