@@ -10,7 +10,6 @@ def test_create_player_retries_after_invalid_name(mock_slow_print, mock_input):
     assert player.name == "Aria"
     assert player.health == 100
     assert player.inventory == []
-
     assert mock_input.call_count == 2
 
     mock_slow_print.assert_any_call(
